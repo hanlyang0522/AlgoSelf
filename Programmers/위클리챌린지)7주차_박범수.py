@@ -1,35 +1,30 @@
-def ansUpdate(room, ans):
-    for i in range(0, len(ans)):
-            if i+1 in room:
-                for ppl in room:
-                    if ppl not in ans[i] and ppl != i+1:
-                        ans[i].append(ppl)
-
-
 def solution(enter, leave):
-    ans1 = [[] for _ in range(len(enter))]
+    answer = [0 for _ in range(len(enter))]
+    e_list = [] # 현재 room에 남아있는 사람
+    l_queue = [] # 나갈 차례가 된 사람
 
-    idx_in, idx_out = 0, 0
-    room = []
-    while idx_out < len(leave):
-        if idx_in < len(enter):
-            room.append(enter[idx_in])
-            idx_in += 1
-            print(room)
-            ansUpdate(room, ans1)
+    for e, l in zip(enter, leave):
+        e_list.append(e)
+        l_queue.append(l)
 
-        if leave[idx_out] in room: # and idx_out < len(leave):
-            room.remove(leave[idx_out])
-            idx_out += 1
-            print(room)
-            ansUpdate(room, ans1)
+        while len(l_queue) != 0 and l_queue[0] in e_list:
+            l_tmp = l_queue[0]
+            # 나갔으니 제거
+            l_queue.pop(0)
+            e_list.remove(l_tmp)
+
+            # 나간 사람은 room에 남아있는 사람 수만큼 만남
+            if len(e_list) != 0:
+                answer[l_tmp - 1] += len(e_list)
+
+            # 남은 사람은 현재 나간사람을 만남
+            for e_p in e_list:
+                answer[e_p - 1] += 1
+
+    print(answer)
+    return answer
 
 
-    print(ans1)
-    ans2 = [len(x) for x in ans1]
-    print(ans2)
-    return ans2
-
-# solution([1, 3, 2], [1, 2, 3])
 solution([1, 4, 2, 3], [2, 1, 3, 4])
 solution([1, 2, 3], [3, 2, 1])
+solution([1, 4, 2, 3], [2, 1, 4, 3])

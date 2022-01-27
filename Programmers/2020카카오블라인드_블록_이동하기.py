@@ -1,50 +1,60 @@
 # DFS에서 방향전환 시 방향전환 가능한지 check
 # 현재 방향
 
-from re import L
 import sys
 from collections import deque
 
 f = sys.stdin.readline
 
-dlist = [[-1, 0], [0, 1], [1, 0], [0, -1]]
+
+def move(p1, p2, nboard):
+    dirs = [[-1, 0], [0, 1], [1, 0], [0, -1]]
+    poss = []  # 이동 가능한 위치
+
+    # 상하좌우로 이동 가능
+    for dy, dx in dirs:
+        # 이동 후 위치
+        n1 = (p1[0] + dy, p1[1] + dx)
+        n2 = (p2[0] + dy, p2[1] + dx)
+        if nboard[n1[0]][n1[1]] == 0 and nboard[n2[0]][n2[1]] == 0:
+            poss.append((n1, n2))
+
+    # 회전
+    if p1[0] == p2[0]:  # 수평일 경우
+        for i in [-1, 1]:
+            if nboard[p1[0] + i][p1[1]] == 0 and nboard[p2[0] + i][p2[1]] == 0:  # 둘 다 0이어야 회전 가능
+                poss.append((p1, (p1[0] + i, p1[1])))  # p1 기준 회전
+                poss.append((p2, (p2[0] + i, p2[1])))  # p2 기준 회전
+    else:  # 수직일 경우
+        for i in [-1, 1]:
+            if nboard[p1[0]][p1[1] + i] == 0 and nboard[p2[0]][p2[1] + i] == 0:  # 둘 다 0이어야 회전 가능
+                poss.append(((p1[0], p1[1] + i), p1))  # p1 기준 회전
+                poss.append(((p2[0], p2[1] + i), p2))  # p2 기준 회전
+
+    return poss
 
 
 def solution(board):
-    N = len(board)
-    time = [[-1 for i in range(N)] for j in range(N)]
+    # 가장자리 벽이 있는 보드 생성
+    l = len(board)
+    nboard = [[1] * (l + 2) for _ in range(l + 2)]
+    for i in range(l):
+        for j in range(l):
+            nboard[i + 1][j + 1] = board[i][j]
 
-    stk = deque()
-    stk.append([0, 0, "L", "H", 0])  # y, x, 진행방향 L/D, 로봇방향 H/V, 경과시간
+    dq = deque([((1, 1), (1, 2), 0)])  # 리스트에 p1, p2, 경과시간 저장
+    visit = set([((1, 1), (1, 2))])  # 지나온 위치 저장
 
-    while stk:
-        y, x, m_dir, r_dir, time = stk.pop()
+    while dq:
+        p1, p2, time = dq.popleft()
+        if p1 == (l, l) or p2 == (l, l):
+            return time
 
-        for dy, dx in dlist:
-            ty, tx = y + dy, x + dx
-
-            if ty < 0 or ty > N - 1 or tx < 0 or tx > N - 1:
-                continue
-            elif board[ty][tx] == 1:
-                continue
-
-            if ty != 0:  # 이번 방향
-                t_dir = "L"
-            else:
-                t_dir = "D"
-
-            if t_dir != m_dir:
-            # 돌릴 수 있는지 확인 후 돌리기
-                pass
-            else:
-                
-
-
-            # 진행한 곳이 더 느리면 skip, 빠르면 갱신 후 push
-
-            
-
-    return answer
+        # BFS
+        for k in move(p1, p2, nboard):
+            if k not in visit:
+                dq.append((*k, time + 1))
+                visit.add(k)
 
 
 if __name__ == "__main__":

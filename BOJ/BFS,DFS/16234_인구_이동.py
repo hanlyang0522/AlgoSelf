@@ -1,5 +1,8 @@
 # 2중 리스트의 탐색을 2중 for문으로 하는 것보다
 # deque로 변환하면 속도가 빨라짐? --> 경우에 따라 다른듯
+# for num in yx_list:
+# for num in range(len(yx_list)):
+# num = yx_list.popleft()
 
 import sys
 from collections import deque

@@ -29,10 +29,10 @@ def solution(n, weak, dist):
             answer = min(answer, cnt)
 
     if answer > len(dist):
-        print(-1)
-        # return -1
-    print(answer)
-    # return answer
+        # print(-1)
+        return -1
+    # print(answer)
+    return answer
 
 
 solution(12, [1, 5, 6, 10], [1, 2, 3, 4])

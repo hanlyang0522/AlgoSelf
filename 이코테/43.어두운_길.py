@@ -22,11 +22,11 @@ input_lines_1 = """7 11
 input_lines_iter = {0: iter(input_lines_1.split("\n"))}
 
 
+# 이후 python .py --test 1 2 3 처럼 사용
 def input():
     return next(input_lines_iter[args.test])
 
 
-# 이후 python .py --test 1 2 3 처럼 사용
 def get_parent(parent, r):
     if parent[r] == r:
         return r

@@ -14,8 +14,10 @@ input_lines_2 = """8 5
 input_lines_iter = {1: iter(input_lines_1.split("\n")), 2: iter(input_lines_2.split("\n"))}
 
 
+# 이후 python .py --test 1 2 3 처럼 사용
 def input():
     return next(input_lines_iter[args.test])
 
 
-# 이후 python .py --test 1 2 3 처럼 사용
+if __name__ == "__main__":
+    pass

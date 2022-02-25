@@ -17,11 +17,13 @@ def floyd(n, m, bus):
             for b in range(n):
                 graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
 
-    for i in range(n):
-        for j in range(n):
-            print(graph[i][j], end=" ")
-        if i != n - 1:
-            print()
+    for i in graph:
+        for j in i:
+            if j == sys.maxsize:
+                print(0, end=" ")
+            else:
+                print(j, end=" ")
+        print()
 
 
 if __name__ == "__main__":

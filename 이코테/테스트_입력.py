@@ -11,7 +11,7 @@ input_lines_2 = """8 5
 1 5 4 3 2 4 5 2
 """
 
-input_lines_iter = {1: iter(input_lines_1.split("\n")), 2: iter(input_lines_2.split("\n"))}
+input_lines_iter = {0: iter(input_lines_1.split("\n")), 1: iter(input_lines_2.split("\n"))}
 
 
 # 이후 python .py --test 1 2 3 처럼 사용

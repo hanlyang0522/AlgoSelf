@@ -1,4 +1,4 @@
 *.json
 .vscode/*
-BOJ/practice.ipynb
-BOJ/practice.py
+practice.py
+practice.ipynb

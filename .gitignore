@@ -1,4 +1,5 @@
 *.json
 .vscode/*
 practice.py
-practice.ipynb
+*.ipynb
+SK 코테/*

@@ -23,3 +23,4 @@ for i in range(1, N + 1):
             dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - W] + V)
 
 print(dp[-1][-1])
+print(dp)

@@ -1,0 +1,74 @@
+from collections import defaultdict
+
+# Trie의 노드
+class Node:
+    def __init__(self, data=None) -> None:
+        self.data = data  # node가 표현하는 문자
+        self.child = {}  # 하위 node
+        self.length = {}  # 하위 node의 길이의 수
+
+
+class Trie:
+    def __init__(self) -> None:
+        self.head = Node(None)
+
+    def insert(self, string):
+        curr_node = self.head
+        length = len(string)
+
+        # 현재 node가 포함하는 문자의 길이 저장
+        if not length in curr_node.length:
+            curr_node.length[length] = 1
+        else:
+            curr_node.length[length] += 1
+
+        for char in string:
+            # trie 타고 내려감
+            if not char in curr_node.child:
+                curr_node.child[char] = Node(char)
+            curr_node = curr_node.child[char]
+
+            length -= 1
+            if not length in curr_node.length:
+                curr_node.length[length] = 1
+            else:
+                curr_node.length[length] += 1
+
+    def search(self, query, wild):
+        curr_node = self.head
+
+        for char in query:
+            if char in curr_node.child:
+                curr_node = curr_node.child[char]
+            else:
+                return 0
+
+        if not wild in curr_node.length:
+            return 0
+        else:
+            return curr_node.length[wild]
+
+
+def solution(words, queries):
+    trie = Trie()
+    trie_inv = Trie()
+
+    for word in words:
+        trie.insert(word)
+        trie_inv.insert(word[::-1])
+
+    result = []
+    for query in queries:
+        if query[0] != "?":
+            q_idx = query.find("?")
+            q = query[:q_idx]  # 물음표 제외한 문자열
+            wild = len(query[q_idx:])  # 물음표 개수
+            result.append(trie.search(q, wild))
+        else:
+            query = query[::-1]
+            q_idx = query.find("?")
+            q = query[:q_idx]
+            wild = len(query[q_idx:])
+            result.append(trie_inv.search(q, wild))
+
+    return result

@@ -1,0 +1,33 @@
+def convertTo(num, base):
+    q, r = divmod(num, base)  # 몫, 나머지
+    if q == 0:
+        return r
+    else:
+        return 10 * convertTo(q, base) + r
+
+
+def isPrime(num):
+    if num == 1:
+        return False
+    for i in range(2, int(num ** 0.5)+1):
+        if num / i == int(num / i):
+            return False
+    return True
+
+
+def solution(n, k):
+    num = convertTo(n, k)
+    li = list(str(num).split("0"))
+
+    tmp = []
+    cnt = 0
+    for l in li:
+        if l == "":
+            continue
+        elif l in tmp:
+            cnt += 1
+        elif isPrime(int(l)):
+            tmp.append(int(l))
+            cnt += 1
+
+    return cnt

@@ -1,0 +1,105 @@
+# 1. 55 ~ 어피치 점수까지 --> x
+# 2. n=10이라 모든 조합 구해서
+# 3. 각 과녁에 대해 (어피치+1 or 안 맞춤)으로 dfs/bfs
+
+from itertools import combinations_with_replacement
+from collections import deque
+
+
+def solution1(n, info):
+    ans = [0 for _ in range(11)]
+    win = False
+    max_num = 0  # 가장 큰 점수차
+
+    # 1. 중복조합으로 라이언 점수 생성
+    for res in list(combinations_with_replacement(range(11), n)):
+        tmp = [0 for _ in range(11)]  # 라이언이 맞춘 과녁
+        for r in res:
+            tmp[10 - r] += 1
+
+        lion, peach = 0, 0
+
+        # 2. 라이온, 어피치 점수 비교
+        for i, (l, p) in enumerate(zip(tmp, info)):
+            if l == p == 0:
+                continue
+            if p >= l:
+                peach += 10 - i
+            elif l > p:
+                lion += 10 - i
+
+        if lion > peach:
+            win = True
+            if (lion - peach) > max_num:
+                max_num = lion - peach
+                ans = tmp
+
+    if not win:
+        return [-1]
+    return ans
+
+
+def bfs(n, info):
+    res = []
+    q = deque([(0, [0 for _ in range(11)])])
+    max_gap = 0
+
+    while q:
+        focus, arrow = q.popleft()  # 맞출 과녁, 현재 화살
+
+        # 1. 화살 다 쐈을 경우
+        if sum(arrow) == n:
+            apeach, lion = 0, 0
+
+            for i in range(11):
+                if info[i] == 0 and arrow[i] == 0:
+                    continue
+                if info[i] >= arrow[i]:
+                    apeach += 10 - i
+                else:
+                    lion += 10 - i
+
+            # 라이언이 이길 경우
+            if lion > apeach:
+                gap = lion - apeach
+                if gap > max_gap:
+                    max_gap = gap
+                    res = [arrow[:]]
+                elif gap == max_gap:
+                    res.append(arrow)
+
+        # 2. 화살을 더 쏜 경우
+        elif sum(arrow) > n:
+            continue
+
+        # 3. 화살을 덜 쏜 경우
+        elif focus == 10:
+            tmp = arrow.copy()
+            tmp[focus] = n - sum(tmp)  # 마지막 과녁에 다 쏨
+            q.append((-1, tmp))
+
+        # 화살 쏘기
+        else:
+            tmp = arrow[:]
+            tmp[focus] = info[focus] + 1
+            q.append((focus + 1, tmp))  # 어피치보다 1발 많이 쏘기
+            tmp2 = arrow[:]
+            tmp2[focus] = 0
+            q.append((focus + 1, tmp2))  # 0발 쏘기
+
+    return res
+
+
+def solution2(n, info):
+    win_list = bfs(n, info)
+
+    if not win_list:
+        return [-1]
+    elif len(win_list) == 1:
+        return win_list[0]
+    else:
+        return win_list[-1]
+
+
+solution = solution1
+# solution = solution2

@@ -1,0 +1,58 @@
+import math
+
+
+def solution(fees, records):
+    record = []
+    for rec in records:
+        hour, car, io = rec.split()
+        record.append([hour, int(car), io])
+
+    record = sorted(record, key=lambda x: x[1])
+    result = {}
+
+    # 차별로 시간 저장
+    for i in range(len(record) - 1):
+        hour, car, io = record[i]
+        n_hour, n_car, n_io = record[i + 1]
+
+        if io == "IN" and n_io == "OUT":
+            hh, mm = int(hour[:2]), int(hour[3:])
+            n_hh, n_mm = int(n_hour[:2]), int(n_hour[3:])
+            tot = (n_hh * 60 + n_mm) - (hh * 60 + mm)
+        elif io == "IN" and n_io == "IN":
+            hh, mm = int(hour[:2]), int(hour[3:])
+            n_hh, n_mm = 23, 59
+            tot = (n_hh * 60 + n_mm) - (hh * 60 + mm)
+        else:
+            continue
+
+        if car in result:
+            result[car] += tot
+        else:
+            result[car] = tot
+
+    # 마지막 기록
+    hour, car, io = record[-1]
+    if io == "IN":
+        hh, mm = int(hour[:2]), int(hour[3:])
+        n_hh, n_mm = 23, 59
+        tot = (n_hh * 60 + n_mm) - (hh * 60 + mm)
+
+        if car in result:
+            result[car] += tot
+        else:
+            result[car] = tot
+
+    ans = []
+    for k, v in result.items():
+        if v <= fees[0]:
+            ans.append(fees[1])
+        else:
+            v -= fees[0]
+            if v % fees[2] == 0:
+                tmp = v / fees[2]
+            else:
+                tmp = v // fees[2] + 1
+            ans.append(fees[1] + tmp * fees[3])
+
+    return ans

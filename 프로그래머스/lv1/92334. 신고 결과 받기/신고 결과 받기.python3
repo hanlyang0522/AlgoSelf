@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+
+def solution(id_list, report, k):
+    di1 = defaultdict(set)  # 해당 id를 신고한 사람 모임
+    di2 = defaultdict(int)  # id당 신고기록 받은 수
+
+    for r in report:
+        user, rep = r.split()  # 신고 한/받은 사람
+        di1[rep].add(user)
+
+    for key, value in di1.items():
+        if len(value) >= int(k):
+            for name in value:
+                di2[name] += 1
+
+    ans = []
+    for id in id_list:
+        ans.append(di2[id])
+
+    return ans

@@ -1,0 +1,28 @@
+from itertools import combinations
+from collections import defaultdict
+
+
+def solution(orders, course):
+    di = defaultdict(int)
+
+    for order in orders:
+        for i in course:
+            tmp = list(combinations(order, i))
+            for t in tmp:
+                t = sorted(t)
+                t = "".join(t)
+                di[t] += 1
+
+    di = sorted(di.items(), key=lambda x: (len(x[0]), -x[1]))
+
+    ans = []
+    length, cnt = len(di[0][0]), max(2, di[0][1])
+    for k, v in di:
+        if len(k) > length:
+            length = len(k)
+            cnt = max(2, v)
+
+        if v == cnt:
+            ans.append(k)
+
+    return sorted(ans)

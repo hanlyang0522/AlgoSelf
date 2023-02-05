@@ -7,3 +7,5 @@ practice.py
 practice_boj.py
 practice_pro.py
 practice.ipynb
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*

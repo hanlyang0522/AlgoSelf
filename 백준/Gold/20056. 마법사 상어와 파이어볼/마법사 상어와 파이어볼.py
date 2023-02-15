@@ -21,13 +21,10 @@ def move():
             nr, nc = (r + s * dirs[d][0]) % n, (c + s * dirs[d][1]) % n
             di[(nr, nc)].append((m, s, d))
 
-    # 파이어볼 합체
     fbls = defaultdict(list)
 
-    # print(di)q
     for k, v in di.items():
-        # print(k, v, len(v))
-
+        # 파이어볼 합체
         r, c = k
         if len(v) > 1:
             sumM, sumS = 0, 0
@@ -50,6 +47,7 @@ def move():
                 d = [1, 3, 5, 7]
             for __d in d:
                 fbls[(r, c)].append((m, s, __d))
+        # 1개는 그대로 
         else:
             fbls[k].append(v[0])
 
@@ -61,15 +59,12 @@ if __name__ == "__main__":
     for _ in range(m):
         r, c, m, s, d = map(int, f().split())
         fbls[(r - 1, c - 1)].append((m, s, d))
-    # print(fbls)
 
     for _ in range(k):
         move()
-        # print(fbls)
 
     total = 0
     for k, v in fbls.items():
-        # print(v)
         for m, s, d in v:
             total += m
     print(total)

@@ -4,11 +4,11 @@ n = 10^9라 최소 O(NlogN)으로 풀어야함
 
 
 def isPossible(target):
-    cnt = n
+    cnt = 0
     for ti in times:
-        cnt -= target // ti
+        cnt += target // ti
 
-    return cnt <= 0
+    return cnt >= n
 
 
 def solution(_n, _times):

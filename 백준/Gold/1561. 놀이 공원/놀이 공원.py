@@ -25,7 +25,7 @@ if __name__ == "__main__":
     n, m = map(int, f().split())
     rides = list(map(int, f().split()))
 
-    left, right = 0, 2000000000 * 10000 * 30
+    left, right = 0, max(rides)*n
     while left < right:
         mid = (left + right) // 2
 

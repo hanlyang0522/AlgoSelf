@@ -1,21 +1,9 @@
-import sys
-
-sys.setrecursionlimit(int(1e9))
-
-
-def recursion(n):
-    global memo
-
-    if memo[n] == -1:
-        memo[n] = recursion(n - 1) + recursion(n - 2)
-
-    return memo[n] % 1000000007
-
-
 def solution(n):
-    global memo
-    memo = [-1] * (n + 3)
+    dp = [-1] * (n + 1)
+    dp[1], dp[2] = 1, 2
 
-    memo[0] = memo[1] = 1
+    for i in range(3, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+        dp[i] %= 1000000007
 
-    return recursion(n)
+    return dp[n]

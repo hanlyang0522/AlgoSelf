@@ -18,9 +18,9 @@ def dragonCurve(x, y, d, _g):
 
     for g in range(_g):
         # mli에 있는 역순으로 90도 회전해서 이동
-        for i in range(len(mli) - 1, -1, -1):
+        for md in mli[::-1]:
             # 90도 회전 + 이동경로 저장
-            mli.append((mli[i] + 1) % 4)
+            mli.append((md + 1) % 4)
 
     for md in mli:
         y, x = y + dirs[md][0], x + dirs[md][1]

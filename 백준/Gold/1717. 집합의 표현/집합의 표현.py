@@ -10,16 +10,12 @@ f = sys.stdin.readline
 
 
 def find(a):
-    global parent
-
     if a != parent[a]:
         parent[a] = find(parent[a]) # 경로압축 하지 않을 경우 O(N^2)
     return parent[a]
 
 
 def union(a, b):
-    global parent 
-
     x, y = find(a), find(b)
     if x < y:
         parent[y] = x
@@ -28,8 +24,6 @@ def union(a, b):
 
 
 if __name__ == "__main__":
-    global parent 
-
     n, m = map(int, f().split())
     parent = [i for i in range(n + 1)]
 

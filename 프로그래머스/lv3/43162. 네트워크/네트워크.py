@@ -1,33 +1,40 @@
+"""
+dfs or union-find
+마지막에 그래프 개수 셀 때 i를 바로 찾는게 아니라 parent[i]를 기준으로 카운트해야함
+"""
 from collections import defaultdict
 
 
-def dfs(start, mat, visit):
-    stack = []
-    stack.append(start)
+def find(x):
+    global parent
 
-    while stack:
-        now = stack.pop()
+    if x != parent[x]:
+        parent[x] = find(parent[x])
+    return parent[x]
 
-        for next in mat[now]:
-            if next not in visit:
-                visit.append(next)
-                stack.append(next)
+
+def union(x, y):
+    global parent
+
+    a, b = find(x), find(y)
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b
 
 
 def solution(n, computers):
-    ans = 0
-    mat = defaultdict(list)
-    visit = []
+    global parent
+
+    parent = [i for i in range(n)]
 
     for i in range(n):
-        for j in range(i, n):
+        for j in range(n):
             if computers[i][j]:
-                mat[i].append(j)
-                mat[j].append(i)
+                union(i, j)
 
-    for i in range(n):
-        if i not in visit:
-            ans += 1
-            dfs(i, mat, visit)
+    di = defaultdict(int)
+    for i in parent:
+        di[find(i)] += 1
 
-    return ans
+    return len(di.items())

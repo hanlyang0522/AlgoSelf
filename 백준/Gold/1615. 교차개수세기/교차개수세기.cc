@@ -5,18 +5,23 @@
 
 using namespace std;
 
-void update(vector<int>& tree, int i) {
-	int tsize = tree.size();
+int tree[2001];
+vector<int> vec[2001];
+long long ans = 0;
 
-	while(i < tsize) {
+int N, M, a, b;
+	
+void update(int i) {
+	while(i <= N) {
 		tree[i] += 1;
 		i += (i & -i);
 	}
 }
 
-int sum(vector<int>& tree, int i) {
-	long long res = 0;
-	while(i > 0) {
+int query(int i) {
+	int res = 0;
+	
+	while(i) {
 		res += tree[i];
 		i -= (i & -i);
 	}
@@ -29,31 +34,23 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N, M;
 	cin >> N >> M;
 
 	// 간선 입력
-	vector<pair<int, int>> vec;
-	vec.reserve(M + 1);
-
-	int a, b;
-	for(register unsigned int i = 0; i < M; i++) {
+	while(M--){
 		cin >> a >> b;
-		vec.push_back(pair<int, int>(a, b));
+		vec[a].push_back(b);
 	}
-	sort(vec.begin(), vec.end());
-
 
 	// 펜윅
-	int tree_size = N + 1;
-	vector<int> tree(tree_size);
-
-	long long ans = 0;
-
-	for(vector<pair<int, int>>::iterator i = vec.begin(); i != vec.end(); ++i) {
-		update(tree, i->second);
-		ans += (sum(tree, N) - sum(tree, i->second));
+	for(int i=0;i<N+1;i++){
+	    sort(vec[i].begin(), vec[i].end());
+	    
+	    for(vector<int>::iterator j = vec[i].begin(); j != vec[i].end(); ++j){
+    		update(*j);
+	    	ans += (query(N) - query(*j));
+	    }
 	}
 
-	cout << ans << '\n';
+	cout << ans;
 }

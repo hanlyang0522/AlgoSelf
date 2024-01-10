@@ -11,15 +11,14 @@ f = sys.stdin.readline
 def solve(n):
     dq = deque()
     skills = list(map(int, f().split()))
-    skills.reverse()
 
-    for i in range(n):
-        if skills[i] == 1:
-            dq.appendleft(i + 1)
-        elif skills[i] == 2:
-            dq.insert(1, i + 1)
+    for i in range(1, n + 1):
+        if skills[n - i] == 1:
+            dq.appendleft(i)
+        elif skills[n - i] == 2:
+            dq.insert(1, i)
         else:
-            dq.append(i + 1)
+            dq.append(i)
 
     for i in dq:
         print(i, end=" ")

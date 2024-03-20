@@ -1,10 +1,3 @@
-"""
-1. result mat 크기
-45: r+c-1 * r+c-1 / 이외 홀수 모두
-90: c * r / 270
-180: r * c
-"""
-
 import sys
 
 f = sys.stdin.readline
@@ -34,10 +27,8 @@ def solve(r, c):
                 yNow += 1
                 yNext += 1
 
-    for y in range(r):
-        for x in range(c):
-            print(mat[y][x], end="")
-        print()
+    for m in mat:
+        print("".join(m))
 
 
 if __name__ == "__main__":

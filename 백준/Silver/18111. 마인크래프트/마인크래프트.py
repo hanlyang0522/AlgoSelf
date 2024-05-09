@@ -10,7 +10,6 @@ f = sys.stdin.readline
 def solve(n, m, b):
     mat = []
 
-    maxH = -1
     minH = sys.maxsize
     sumH = b
 
@@ -19,10 +18,10 @@ def solve(n, m, b):
 
         mat.append(tmp)
 
-        maxH = max(maxH, max(tmp))
-        minH = min(minH, min(tmp))
+        # minH = min(minH, min(tmp))
         sumH += sum(tmp)
 
+    minH = min(map(min, mat))
     avgH = sumH // (n * m)
     # print(mat, maxH, sumH, avgH)
 

@@ -8,39 +8,36 @@ f = sys.stdin.readline
 
 
 def solve(n, m, b):
-    mat = []
-
-    minH = sys.maxsize
-    sumH = b
+    mat = [0] * 257
 
     for _ in range(n):
-        tmp = list(map(int, f().split()))
-
-        mat.append(tmp)
-
-        # minH = min(minH, min(tmp))
-        sumH += sum(tmp)
-
-    minH = min(map(min, mat))
-    avgH = sumH // (n * m)
-    # print(mat, maxH, sumH, avgH)
+        for tmpH in map(int, f().split()):
+            mat[tmpH] += 1
 
     totalTime = sys.maxsize
     totalH = -1
 
-    for H in range(minH, avgH + 1):
+    for targetH in range(257):
         tmpTime = 0
+        blockAdd, blockSub = 0, 0
 
-        for y in range(n):
-            for x in range(m):
-                if mat[y][x] > H:
-                    tmpTime += (mat[y][x] - H) * 2
-                else:
-                    tmpTime += H - mat[y][x]
+        for tmpH in range(257):
+            if mat[tmpH] == 0:
+                continue
+
+            if tmpH > targetH:
+                blockSub += (tmpH - targetH) * mat[tmpH]
+            else:
+                blockAdd += (targetH - tmpH) * mat[tmpH]
+
+        if blockAdd > blockSub + b:
+            continue
+
+        tmpTime = blockAdd + blockSub * 2
 
         if tmpTime <= totalTime:
             totalTime = tmpTime
-            totalH = H
+            totalH = targetH
 
     print(totalTime, totalH)
 

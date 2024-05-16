@@ -17,10 +17,8 @@ def solve(r, c, T):
 
         rotate(sY, sX, eY, eX, rot)
 
-    for y in range(r):
-        for x in range(c):
-            print(mat[y][x], end=" ")
-        print()
+    for row in mat:
+        print(' '.join(map(str, row)))
 
 
 def rotate(sY, sX, eY, eX, rot):

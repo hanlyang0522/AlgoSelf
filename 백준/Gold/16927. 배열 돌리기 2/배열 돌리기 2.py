@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 
 f = sys.stdin.readline
 
@@ -9,16 +8,14 @@ def solve(r, c, T):
 
     mat = [list(map(int, f().split())) for _ in range(r)]
 
-    y, x = 0, 0
-    h, w = r, c
+    for shell in range(min(r, c) // 2):
+        cycle = (r - shell * 2 + c - shell * 2) * 2 - 4
+        rot = T % cycle
 
-    while h != 0 and w != 0:
-        rotate(y, x, h, w, T)
+        sY, sX = shell, shell
+        eY, eX = r - 1 - shell, c - 1 - shell
 
-        y += 1
-        x += 1
-        h -= 2
-        w -= 2
+        rotate(sY, sX, eY, eX, rot)
 
     for y in range(r):
         for x in range(c):
@@ -26,35 +23,32 @@ def solve(r, c, T):
         print()
 
 
-def rotate(y, x, h, w, T):
-    q = deque()
+def rotate(sY, sX, eY, eX, rot):
+    tmp = []
+    tmp.extend(mat[sY][sX:eX])
+    tmp.extend(mat[i][eX] for i in range(sY, eY))
+    tmp.extend(mat[eY][i] for i in range(eX, sX, -1))
+    tmp.extend(mat[i][sX] for i in range(eY, sY, -1))
 
-    for i in range(x, x + w):
-        q.append(mat[y][i])
+    tmp = tmp[rot:] + tmp[:rot]  # rotate
 
-    for i in range(y + 1, y + h):
-        q.append(mat[i][x + w - 1])
+    idx = 0
 
-    for i in range(x + w - 2, x, -1):
-        q.append(mat[y + h - 1][i])
+    for i in range(sX, eX):
+        mat[sY][i] = tmp[idx]
+        idx += 1
 
-    for i in range(y + h - 1, y, -1):
-        q.append(mat[i][x])
+    for i in range(sY, eY):
+        mat[i][eX] = tmp[idx]
+        idx += 1
 
-    T = T % (2 * w + 2 * h - 4)
-    q.rotate(-T)
+    for i in range(eX, sX, -1):
+        mat[eY][i] = tmp[idx]
+        idx += 1
 
-    for i in range(x, x + w):
-        mat[y][i] = q.popleft()
-
-    for i in range(y + 1, y + h):
-        mat[i][x + w - 1] = q.popleft()
-
-    for i in range(x + w - 2, x, -1):
-        mat[y + h - 1][i] = q.popleft()
-
-    for i in range(y + h - 1, y, -1):
-        mat[i][x] = q.popleft()
+    for i in range(eY, sY, -1):
+        mat[i][sX] = tmp[idx]
+        idx += 1
 
 
 if __name__ == "__main__":

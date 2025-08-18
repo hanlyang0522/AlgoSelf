@@ -27,7 +27,7 @@ class Solution:
             for dy, dx in dirs:
                 ty, tx = y + dy, x + dx
 
-                if 0 <= ty < m and 0 <= tx < n:
+                if 0 <= ty < m and 0 <= tx < n and visited[ty][tx] > depth + 1:
                     dq.append([ty, tx, depth + 1])
 
         return visited

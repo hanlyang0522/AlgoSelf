@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2  # 최근 커밋 기록을 가져오기 위해 설정
 
@@ -49,6 +49,8 @@ jobs:
 
       - name: Commit & Push changes
         run: |
+          git pull origin
+          
           # 변경사항이 있는지 확인
           if git status --porcelain | grep .; then
             git config --global user.name 'github-actions[bot]'

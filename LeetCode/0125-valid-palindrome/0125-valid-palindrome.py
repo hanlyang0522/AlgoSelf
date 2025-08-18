@@ -1,6 +1,3 @@
-import re
-
-
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         s_englower = "".join([char for char in s if char.isalnum()]).lower()

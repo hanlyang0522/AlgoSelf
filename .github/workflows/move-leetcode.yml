@@ -49,8 +49,8 @@ jobs:
 
       - name: Commit & Push changes
         run: |
-          git pull origin
-          
+          git pull origin master
+
           # 변경사항이 있는지 확인
           if git status --porcelain | grep .; then
             git config --global user.name 'github-actions[bot]'

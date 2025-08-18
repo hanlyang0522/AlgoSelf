@@ -3,6 +3,11 @@ class Solution:
         self, intervals: List[List[int]], newInterval: List[int]
     ) -> List[List[int]]:
 
+        if not intervals:
+            return [newInterval]
+        if not newInterval:
+            return intervals
+
         n = len(intervals)
         li = []
         i = 0

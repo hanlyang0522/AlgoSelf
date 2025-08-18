@@ -5,6 +5,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/hanlyang0522/AlgoSelf/tree/master/0001-two-sum) |
+| [0053-maximum-subarray](https://github.com/hanlyang0522/AlgoSelf/tree/master/0053-maximum-subarray) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/hanlyang0522/AlgoSelf/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
 | [0792-binary-search](https://github.com/hanlyang0522/AlgoSelf/tree/master/0792-binary-search) |
@@ -34,6 +35,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Dynamic Programming
 |  |
 | ------- |
+| [0053-maximum-subarray](https://github.com/hanlyang0522/AlgoSelf/tree/master/0053-maximum-subarray) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/hanlyang0522/AlgoSelf/tree/master/0121-best-time-to-buy-and-sell-stock) |
 ## Two Pointers
 |  |
@@ -59,4 +61,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
+## Divide and Conquer
+|  |
+| ------- |
+| [0053-maximum-subarray](https://github.com/hanlyang0522/AlgoSelf/tree/master/0053-maximum-subarray) |
 <!---LeetCode Topics End-->

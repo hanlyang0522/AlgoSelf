@@ -16,12 +16,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0001-two-sum](https://github.com/hanlyang0522/AlgoSelf/tree/master/0001-two-sum) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
+| [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
 ## String
 |  |
 | ------- |
 | [0020-valid-parentheses](https://github.com/hanlyang0522/AlgoSelf/tree/master/0020-valid-parentheses) |
 | [0125-valid-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0125-valid-palindrome) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
+| [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
 ## Stack
 |  |
 | ------- |
@@ -84,4 +86,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0278-first-bad-version](https://github.com/hanlyang0522/AlgoSelf/tree/master/0278-first-bad-version) |
+## Counting
+|  |
+| ------- |
+| [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
 <!---LeetCode Topics End-->

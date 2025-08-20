@@ -19,9 +19,16 @@ jobs:
 
       - name: Pull
         run: |
+          # 로컬의 추적되지 않는 파일을 임시 저장
           git stash push --include-untracked 
+
+          # 최신 변경사항을 원격 저장소에서 가져와 병합
           git pull origin master
-          git stash pop
+
+          # 스택에 항목이 있는지 확인하고 pop 실행
+          if git stash list | grep -q 'stash@'; then
+            git stash pop
+          fi
 
       - name: Move LeetCode solutions
         run: |

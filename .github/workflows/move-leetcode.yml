@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 2  # 최근 커밋 기록을 가져오기 위해 설정
 
       - name: Pull
-        run:
+        run: |
           git stash push --include-untracked 
           git pull origin master
           git stash pop

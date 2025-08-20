@@ -17,6 +17,12 @@ jobs:
         with:
           fetch-depth: 2  # 최근 커밋 기록을 가져오기 위해 설정
 
+      - name: Pull
+        run:
+          git stash push --include-untracked 
+          git pull origin master
+          git stash pop
+
       - name: Move LeetCode solutions
         run: |
           # 디버깅을 위한 현재 디렉토리 내용 출력
@@ -49,8 +55,6 @@ jobs:
 
       - name: Commit & Push changes
         run: |
-          git pull origin master
-
           # 변경사항이 있는지 확인
           if git status --porcelain | grep .; then
             git config --global user.name 'github-actions[bot]'

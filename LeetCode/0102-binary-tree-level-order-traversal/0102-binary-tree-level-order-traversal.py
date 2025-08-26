@@ -1,34 +1,28 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None:
             return []
 
         dq = deque()
-        dq.append([root, 0])
-        li = [[]]
+        dq.append(root)
+        li = []
 
         # 1. while loop
         # 2. stack? dq? --> bfs = dq
         while dq:
-            # 순서는 간단한데... lv는 어떻게 처리?? --> push할때 level을 입력!!
-            node, lv = dq.popleft()
+            lv = []
 
-            if node is None:
-                continue
+            for _ in range(len(dq)):    # loop 시작시 dq에 있는건 모두 같은 lv
+                node = dq.popleft()
 
-            if len(li) <= lv:
-                li.append([])
+                lv.append(node.val)
 
-            li[lv].append(node.val)
+                # leaf 아닐 경우에만 push
+                if node.left:
+                    dq.append(node.left)
+                if node.right:
+                    dq.append(node.right)
 
-            dq.append([node.left, lv + 1])
-            dq.append([node.right, lv + 1])
-
+            li.append(lv)
+            
         return li

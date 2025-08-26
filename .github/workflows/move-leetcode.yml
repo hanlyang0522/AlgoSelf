@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # 수동 실행 옵션 유지
   push:
     paths:
-      - '[0-9][0-9][0-9][0-9]-*/**'  # LeetHub가 생성하는 폴더 패턴 (예: 0020-valid-parentheses)
+      - '[0-9][0-9][0-9][0-9]-*/**.py'  # LeetHub가 생성하는 폴더 패턴 (예: 0020-valid-parentheses)
 
 jobs:
   move-files:

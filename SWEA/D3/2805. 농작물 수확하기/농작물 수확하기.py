@@ -1,18 +1,20 @@
-T = int(input().strip())
-for tc in range(1, T + 1):
-    n = int(input())
-    mat = [list(map(int, input())) for _ in range(n)]
-    ans = 0
-    
-    if n == 1:
-        print(f'#{tc} {mat[0][0]}')
-        continue
+T = int(input())
 
-    for y in range(n//2):
-        for x in range(n//2-y, n//2+y+1):
-            ans += mat[y][x] + mat[n-1-y][x]
-    
-    for x in range(n):
-        ans += mat[n//2][x]
-    print(f'#{tc} {ans}')
-    
+for tc in range(1, T + 1):
+    N = int(input())
+
+    mat = []
+
+    for _ in range(N):
+        mat.append(list(map(int, input())))
+
+    SUM = 0
+    half = N//2
+
+    for i in range(N):
+        if i <= half:
+            SUM += sum(mat[i][half-i:half+i+1])
+        else:
+            SUM += sum(mat[i][i-half:N-(i-half)])
+
+    print(f"#{tc} {SUM}")

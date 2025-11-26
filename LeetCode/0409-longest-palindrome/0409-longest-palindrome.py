@@ -5,7 +5,7 @@ class Solution:
         for l in s:
             di[l] += 1
 
-            num = 0
+        num = 0
         flag = False
 
         for k, v in di.items():

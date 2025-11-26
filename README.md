@@ -22,6 +22,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0141-linked-list-cycle](https://github.com/hanlyang0522/AlgoSelf/tree/master/0141-linked-list-cycle) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
 | [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
+| [0409-longest-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0409-longest-palindrome) |
 ## String
 |  |
 | ------- |
@@ -30,6 +31,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0125-valid-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0125-valid-palindrome) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
 | [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
+| [0409-longest-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0409-longest-palindrome) |
 ## Stack
 |  |
 | ------- |
@@ -163,4 +165,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0207-course-schedule](https://github.com/hanlyang0522/AlgoSelf/tree/master/0207-course-schedule) |
+## Greedy
+|  |
+| ------- |
+| [0409-longest-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0409-longest-palindrome) |
 <!---LeetCode Topics End-->

@@ -9,6 +9,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0053-maximum-subarray](https://github.com/hanlyang0522/AlgoSelf/tree/master/0053-maximum-subarray) |
 | [0057-insert-interval](https://github.com/hanlyang0522/AlgoSelf/tree/master/0057-insert-interval) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/hanlyang0522/AlgoSelf/tree/master/0121-best-time-to-buy-and-sell-stock) |
+| [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 | [0322-coin-change](https://github.com/hanlyang0522/AlgoSelf/tree/master/0322-coin-change) |
 | [0542-01-matrix](https://github.com/hanlyang0522/AlgoSelf/tree/master/0542-01-matrix) |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
@@ -81,6 +82,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0110-balanced-binary-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0110-balanced-binary-tree) |
 | [0133-clone-graph](https://github.com/hanlyang0522/AlgoSelf/tree/master/0133-clone-graph) |
+| [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 | [0207-course-schedule](https://github.com/hanlyang0522/AlgoSelf/tree/master/0207-course-schedule) |
 | [0226-invert-binary-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0226-invert-binary-tree) |
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
@@ -90,6 +92,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0102-binary-tree-level-order-traversal](https://github.com/hanlyang0522/AlgoSelf/tree/master/0102-binary-tree-level-order-traversal) |
 | [0133-clone-graph](https://github.com/hanlyang0522/AlgoSelf/tree/master/0133-clone-graph) |
+| [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 | [0207-course-schedule](https://github.com/hanlyang0522/AlgoSelf/tree/master/0207-course-schedule) |
 | [0226-invert-binary-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0226-invert-binary-tree) |
 | [0322-coin-change](https://github.com/hanlyang0522/AlgoSelf/tree/master/0322-coin-change) |
@@ -98,6 +101,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Matrix
 |  |
 | ------- |
+| [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 | [0542-01-matrix](https://github.com/hanlyang0522/AlgoSelf/tree/master/0542-01-matrix) |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
 ## Divide and Conquer
@@ -187,4 +191,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0067-add-binary](https://github.com/hanlyang0522/AlgoSelf/tree/master/0067-add-binary) |
+## Union Find
+|  |
+| ------- |
+| [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 <!---LeetCode Topics End-->

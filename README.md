@@ -24,6 +24,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0003-longest-substring-without-repeating-characters](https://github.com/hanlyang0522/AlgoSelf/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0133-clone-graph](https://github.com/hanlyang0522/AlgoSelf/tree/master/0133-clone-graph) |
 | [0141-linked-list-cycle](https://github.com/hanlyang0522/AlgoSelf/tree/master/0141-linked-list-cycle) |
+| [0208-implement-trie-prefix-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0208-implement-trie-prefix-tree) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
 | [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
 | [0409-longest-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0409-longest-palindrome) |
@@ -34,6 +35,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0020-valid-parentheses](https://github.com/hanlyang0522/AlgoSelf/tree/master/0020-valid-parentheses) |
 | [0067-add-binary](https://github.com/hanlyang0522/AlgoSelf/tree/master/0067-add-binary) |
 | [0125-valid-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0125-valid-palindrome) |
+| [0208-implement-trie-prefix-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0208-implement-trie-prefix-tree) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
 | [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
 | [0409-longest-palindrome](https://github.com/hanlyang0522/AlgoSelf/tree/master/0409-longest-palindrome) |
@@ -118,6 +120,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0155-min-stack](https://github.com/hanlyang0522/AlgoSelf/tree/master/0155-min-stack) |
+| [0208-implement-trie-prefix-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0208-implement-trie-prefix-tree) |
 | [0232-implement-queue-using-stacks](https://github.com/hanlyang0522/AlgoSelf/tree/master/0232-implement-queue-using-stacks) |
 ## Queue
 |  |
@@ -201,4 +204,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
+## Trie
+|  |
+| ------- |
+| [0208-implement-trie-prefix-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0208-implement-trie-prefix-tree) |
 <!---LeetCode Topics End-->

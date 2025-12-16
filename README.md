@@ -14,6 +14,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0542-01-matrix](https://github.com/hanlyang0522/AlgoSelf/tree/master/0542-01-matrix) |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
 | [0792-binary-search](https://github.com/hanlyang0522/AlgoSelf/tree/master/0792-binary-search) |
+| [0994-rotting-oranges](https://github.com/hanlyang0522/AlgoSelf/tree/master/0994-rotting-oranges) |
 | [1014-k-closest-points-to-origin](https://github.com/hanlyang0522/AlgoSelf/tree/master/1014-k-closest-points-to-origin) |
 ## Hash Table
 |  |
@@ -98,12 +99,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0322-coin-change](https://github.com/hanlyang0522/AlgoSelf/tree/master/0322-coin-change) |
 | [0542-01-matrix](https://github.com/hanlyang0522/AlgoSelf/tree/master/0542-01-matrix) |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
+| [0994-rotting-oranges](https://github.com/hanlyang0522/AlgoSelf/tree/master/0994-rotting-oranges) |
 ## Matrix
 |  |
 | ------- |
 | [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 | [0542-01-matrix](https://github.com/hanlyang0522/AlgoSelf/tree/master/0542-01-matrix) |
 | [0733-flood-fill](https://github.com/hanlyang0522/AlgoSelf/tree/master/0733-flood-fill) |
+| [0994-rotting-oranges](https://github.com/hanlyang0522/AlgoSelf/tree/master/0994-rotting-oranges) |
 ## Divide and Conquer
 |  |
 | ------- |

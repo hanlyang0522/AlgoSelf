@@ -3,22 +3,22 @@ class Solution:
 
         ans = []
 
-        for can in candidates:
+        for i in range(len(candidates)):
             dq = deque()
-            dq.append([can])
+            dq.append([[candidates[i]], i])
 
             while dq:
-                curr = dq.popleft()
+                curr, idx = dq.popleft()
 
                 if sum(curr) > target or len(curr) > 150:
                     continue
 
                 if sum(curr) == target:
-                    if sorted(curr) not in ans:
-                        ans.append(sorted(curr))
+                    if curr not in ans:
+                        ans.append(curr)
                     continue
 
-                for ca in candidates:
-                    dq.append(curr + [ca])
+                for j in range(idx, len(candidates)):
+                    dq.append([curr + [candidates[j]], j])
 
         return list(ans)

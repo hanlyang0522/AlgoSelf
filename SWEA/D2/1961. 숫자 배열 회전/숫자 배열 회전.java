@@ -28,29 +28,20 @@ class Solution {
 
             bw.write("#" + test_case + "\n");
 
-            for (int y = 0; y < N; y++) {
-                int k = 0;
-                int l = 0;
-
-                for (int x = 0; x < N * 3; x++) {
-                    if (k == N) {
-                        k = 0;
-                        l++;
-
-                        bw.write(" ");
-                    }
-
-                    if (l == 0) { // 90도
-                        bw.write(String.valueOf(mat[N - 1 - k][y]));
-                    } else if (l == 1) { // 180도
-                        bw.write(String.valueOf(mat[N - 1 - y][N - 1 - k]));
-                    } else { // 270도
-                        bw.write(String.valueOf(mat[k][N - 1 - y]));
-                    }
-
-                    k++;
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    bw.write(String.valueOf(mat[N - 1 - j][i]));
                 }
+                bw.write(" ");
 
+                for (int j = 0; j < N; j++) {
+                    bw.write(String.valueOf(mat[N - 1 - i][N - 1 - j]));
+                }
+                bw.write(" ");
+
+                for (int j = 0; j < N; j++) {
+                    bw.write(String.valueOf(mat[j][N - 1 - i]));
+                }
                 bw.write("\n");
             }
 

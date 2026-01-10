@@ -15,6 +15,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0075-sort-colors](https://github.com/hanlyang0522/AlgoSelf/tree/master/0075-sort-colors) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/hanlyang0522/AlgoSelf/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [0150-evaluate-reverse-polish-notation](https://github.com/hanlyang0522/AlgoSelf/tree/master/0150-evaluate-reverse-polish-notation) |
+| [0169-majority-element](https://github.com/hanlyang0522/AlgoSelf/tree/master/0169-majority-element) |
 | [0200-number-of-islands](https://github.com/hanlyang0522/AlgoSelf/tree/master/0200-number-of-islands) |
 | [0238-product-of-array-except-self](https://github.com/hanlyang0522/AlgoSelf/tree/master/0238-product-of-array-except-self) |
 | [0322-coin-change](https://github.com/hanlyang0522/AlgoSelf/tree/master/0322-coin-change) |
@@ -30,6 +31,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0003-longest-substring-without-repeating-characters](https://github.com/hanlyang0522/AlgoSelf/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0133-clone-graph](https://github.com/hanlyang0522/AlgoSelf/tree/master/0133-clone-graph) |
 | [0141-linked-list-cycle](https://github.com/hanlyang0522/AlgoSelf/tree/master/0141-linked-list-cycle) |
+| [0169-majority-element](https://github.com/hanlyang0522/AlgoSelf/tree/master/0169-majority-element) |
 | [0208-implement-trie-prefix-tree](https://github.com/hanlyang0522/AlgoSelf/tree/master/0208-implement-trie-prefix-tree) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
 | [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
@@ -84,6 +86,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0015-3sum](https://github.com/hanlyang0522/AlgoSelf/tree/master/0015-3sum) |
 | [0056-merge-intervals](https://github.com/hanlyang0522/AlgoSelf/tree/master/0056-merge-intervals) |
 | [0075-sort-colors](https://github.com/hanlyang0522/AlgoSelf/tree/master/0075-sort-colors) |
+| [0169-majority-element](https://github.com/hanlyang0522/AlgoSelf/tree/master/0169-majority-element) |
 | [0242-valid-anagram](https://github.com/hanlyang0522/AlgoSelf/tree/master/0242-valid-anagram) |
 | [1014-k-closest-points-to-origin](https://github.com/hanlyang0522/AlgoSelf/tree/master/1014-k-closest-points-to-origin) |
 ## Binary Search
@@ -126,6 +129,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0053-maximum-subarray](https://github.com/hanlyang0522/AlgoSelf/tree/master/0053-maximum-subarray) |
+| [0169-majority-element](https://github.com/hanlyang0522/AlgoSelf/tree/master/0169-majority-element) |
 | [1014-k-closest-points-to-origin](https://github.com/hanlyang0522/AlgoSelf/tree/master/1014-k-closest-points-to-origin) |
 ## Design
 |  |
@@ -144,6 +148,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Counting
 |  |
 | ------- |
+| [0169-majority-element](https://github.com/hanlyang0522/AlgoSelf/tree/master/0169-majority-element) |
 | [0383-ransom-note](https://github.com/hanlyang0522/AlgoSelf/tree/master/0383-ransom-note) |
 ## Sliding Window
 |  |

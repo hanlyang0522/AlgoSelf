@@ -1,9 +1,10 @@
 #include <iostream>
 #include <queue>
 #include <vector>
-#include <cstring>
+#include <string>
 #include <algorithm>
 #include <cmath>
+#include <set>
 
 using namespace std;
 
@@ -23,50 +24,23 @@ int solve()
 
 	const int div = N / 4;
 
-	vector<string> res;
+	set<string, greater<string>> res;
 
-	for (int i = 0;i < N;++i)
+	for (int i = 0;i < div;++i)
 	{
 		for (int j = 0;j < N;j += div)
 		{
 			string tmp = s.substr(j, div);
-
-			auto it = find(res.begin(), res.end(), tmp);
-			if (it == res.end())
-			{
-				res.push_back(tmp);
-			}
+			res.insert(tmp);
 		}
 
 		rotate(s.begin(), s.begin() + 1, s.end());
 	}
 
+	auto it = res.begin();
+	advance(it, K - 1);
 
-	sort(res.begin(), res.end(), [](auto &a, auto&b){
-		if (a > b) return true;
-		else return false;
-	});
-
-
-	string fin = res[K - 1];
-
-	int res_to_num = 0;
-
-	for (int i = 0;i < div;++i)
-	{
-		char c = fin[div - 1 - i];
-		int tmp;
-
-		if (c >= 'A' && c <= 'F')
-			tmp = c - 'A' + 10;
-		else
-			tmp = c - '0';
-
-		res_to_num += tmp * pow(16, i);
-	}
-
-
-	return res_to_num;
+	return stoll(*it, nullptr, 16);
 }
 
 

@@ -1,86 +1,95 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
 #include <queue>
+#include <vector>
+#include <cstring>
+#include <algorithm>
 
-using  namespace std;
+using namespace std;
+
 int D, W, K;
-int mat[50][50];
-int min_k;
-vector<bool> levels;
-bool is_found;
+int mat[14][21];
+int min_depth;
+
+
+typedef pair<int, int> coord;
+coord dirs[4] = {
+	{-1,0}, {0,1}, {1,0}, {0,-1}
+};
+
 
 void init()
 {
 	cin >> D >> W >> K;
 
-	for (int y = 0; y < D; y++)
-		for (int x = 0; x < W; ++x)
+	for (int y = 0;y < D;++y)
+		for (int x = 0;x < W;++x)
 			cin >> mat[y][x];
 
-	min_k = D;
-	levels.assign(D, false);
-	is_found = false;
+	min_depth = D + 1;
 }
 
-// K개 되는지 검사
-void test()
+bool isValid()
 {
-	bool tmp_found;
-	int tmp_cnt;
+	for (int x = 0;x < W;++x)
+	{
+		bool b = false;
+		int cnt = 1;
 
-	for (int x = 0; x < W; ++x) {
-		tmp_found = false;
-		tmp_cnt = 1;
-
-		for (int y = 1; y < D; ++y) {
+		for (int y = 1;y < D;++y)
+		{
 			if (mat[y][x] == mat[y - 1][x])
-				tmp_cnt++;
+				cnt += 1;
 			else
-				tmp_cnt = 1;
+				cnt = 1;
 
-			if (tmp_cnt == K) {
-				tmp_found = true;
+			if (cnt == K)
+			{
+				b = true;
 				break;
 			}
 		}
 
-		if (!tmp_found)
-			return;
+		if (!b)
+			return false;
 	}
 
-	is_found = true;
-	return;
+	return true;
 }
 
-
-void dfs(int cur, int tar, int prev_level)
+void dfs(int cur_depth, int cur_idx)
 {
-	if (cur == tar) {
-		test();
+	if (cur_depth > min_depth)
+		return;
+
+	if (cur_depth == K) 
+	{
+		min_depth = min(min_depth, K);
 		return;
 	}
 
-	for (int y = prev_level; y < D; ++y) {	// 각 row마다. 이전보다 아래 row만 해야됨
-		if (levels[y])	// 이전이랑 같은 row는 skip
-			continue;
+	if (isValid())
+	{
+		min_depth = min(min_depth, cur_depth);
+		return;
+	}
 
-		// 현재 col에 투약
-		int backup[50];
-		levels[y] = true;
-		copy(begin(mat[y]), end(mat[y]), begin(backup));
 
-		// 다음 투약할 row로 dfs 진행
-		fill(begin(mat[y]), end(mat[y]), 0);
-		dfs(cur + 1, tar, y + 1);
+	for (int i = cur_idx+1; i < D;++i)
+	{
+		int tmp[21];
+		memcpy(&tmp, &mat[i], sizeof(mat[i]));
 
-		fill(begin(mat[y]), end(mat[y]), 1);
-		dfs(cur + 1, tar, y + 1);
+		// a
+		//memset(mat[i], 0, sizeof(mat[i]));
+		fill(mat[i], mat[i] + W, 0);
+		dfs(cur_depth + 1, i);
 
-		// 복구
-		copy(begin(backup), end(backup), begin(mat[y]));
-		levels[y] = false;
+		// b
+		//memset(mat[i], 1, sizeof(mat[i]));
+		fill(mat[i], mat[i] + W, 1);
+		dfs(cur_depth + 1, i);
+
+		memcpy(&mat[i], &tmp, sizeof(mat[i]));
 	}
 }
 
@@ -89,33 +98,28 @@ int solve()
 {
 	init();
 
-	int cnt = 0;
+	if (isValid())
+		return 0;
 
-	// 순정일때 검사
-	test();
+	//for (int y = 0;y < D;++y)
+	//	dfs(0, y);
+	dfs(0, -1);
 
-	if (is_found or K == 1)
-		return cnt;
-
-	// 1씩 증가시키며 검사
-	while (++cnt <= K) {
-		dfs(0, cnt, 0);
-
-		if (is_found)
-			break;
-	}
-
-	return cnt;
+	return min_depth;
 }
 
 
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	int tc;
 	cin >> tc;
 
-	for (int i = 1; i < tc + 1; ++i) {
-		cout << "#" << i << " " << solve() << endl;
-	}
+	for (int i = 1;i <= tc;++i)
+		cout << "#" << i << " " << solve() << "\n";
+
 	return 0;
 }

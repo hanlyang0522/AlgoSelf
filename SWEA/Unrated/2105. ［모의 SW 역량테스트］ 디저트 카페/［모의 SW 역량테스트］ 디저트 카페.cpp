@@ -1,76 +1,92 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
 #include <queue>
+#include <vector>
+#include <cstring>
+#include <algorithm>
 
-using  namespace std;
+using namespace std;
 
-vector<vector<int>> mat;
 int N;
-vector<pair<int, int>> dirs = {
-	{-1,-1}, {-1,1}, {1,1},{1,-1}
+int mat[21][21];
+int visit[21][21];
+
+typedef pair<int, int> coord;
+coord dirs[4] = {	// rb부터 시계방향
+	{1,1}, {1,-1}, {-1,-1}, {-1,1}
 };
+
+int max_path;
+int path[101];
+int turn_cnt;
 int ty, tx;
-int maxCnt;
-vector<bool> visitNum;
-//vector<vector<bool>> visitMat;
 
 void init()
 {
 	cin >> N;
 
-	mat.assign(N, vector<int>(N, 0));
+	memset(mat, 0, sizeof(mat));
 
-	for (int y = 0; y < N; ++y)
-		for (int x = 0; x < N; ++x)
+	for (int y = 0;y < N;++y)
+		for (int x = 0;x < N;++x)
 			cin >> mat[y][x];
 
-	visitNum.assign(101, false);
-	//visitMat.assign(N, vector<bool>(N, false));
-
-	maxCnt = -1;
+	max_path = -1;
 }
 
-
-bool isValid(int y, int x) {
+bool isValid(int y, int x)
+{
 	if (y < 0 || y >= N) return false;
 	if (x < 0 || x >= N) return false;
 	return true;
 }
 
-void dfs(int y, int x, int cnt, int dirCnt)
+
+void dfs(int y, int x)
 {
-	if (y == ty && x == tx && dirCnt > 1) {
-		maxCnt = max(maxCnt, cnt);
+	if (y == ty && x == tx && turn_cnt == 3)
+	{
+		int tmp = 0;
+		for (const auto& t : path)
+			tmp += t;
+		max_path = max(max_path, tmp);
+
+		//cout << ty << " " << tx << " \n";
+
+		//for (int i = 0;i < N;++i) {
+		//	for (int j = 0;j < N;++j) {
+		//		cout << visit[i][j] << " ";
+		//	}
+		//	cout << "\n";
+		//}
+
 		return;
 	}
 
-	for (int dirCntCur = dirCnt; dirCntCur < dirCnt + 2; ++dirCntCur) {	// 한쪽 방향으로만 돌아도 ㄱㅊ
-		if (dirCntCur >= 4)
-			break;
+	for (int i = 0;i < 2;++i)
+	{
+		int turn_next = turn_cnt + i;
 
-		auto d = dirs[dirCntCur];
-		int cy = y + d.first;
-		int cx = x + d.second;
-
-		// 예외 처리
-		if (!isValid(cy, cx))
+		if (turn_next == 4)
+		{
 			continue;
-
-		if (!visitNum[mat[cy][cx]] /* && !visitMat[cy][cx]*/) {
-			// 탐색
-			visitNum[mat[cy][cx]] = true;
-			//visitMat[cy][cx] = true;
-
-			dfs(cy, cx, cnt + 1, dirCntCur);
-
-			//visitMat[cy][cx] = false;
-			visitNum[mat[cy][cx]] = false;
 		}
-		else if (cy == ty && cx == tx) {
-			dfs(cy, cx, cnt + 1, dirCnt + 1);	// 실질적인 종료 조건
-		}
+
+		int ny = y + dirs[turn_next].first;
+		int nx = x + dirs[turn_next].second;
+
+		if (!isValid(ny, nx)) continue;
+		if (visit[ny][nx] == 1) continue;
+		if (path[mat[ny][nx]] == 1) continue; // 이미 방문
+
+		visit[ny][nx] = 1;
+		path[mat[ny][nx]] = 1;
+		turn_cnt += i;
+
+		dfs(ny, nx);
+
+		turn_cnt -= i;
+		path[mat[ny][nx]] = 0;
+		visit[ny][nx] = 0;
 	}
 }
 
@@ -79,28 +95,36 @@ int solve()
 {
 	init();
 
-	for (int y = 0; y < N; ++y)
-		for (int x = 1; x < N - 1; ++x) {
-			//y = 2, x = 1;
-			ty = y;
-			tx = x;
+	for (int y = 0;y < N;++y)
+	{
+		for (int x = 0;x < N;++x)
+		{
+			//y = 0, x = 2;
+			//y = 1, x = 4;
+			memset(visit, 0, sizeof(visit));
+			memset(path, 0, sizeof(path));
+			ty = y, tx = x;
+			turn_cnt = 0;
 
-			visitNum[mat[y][x]] = true;
-			dfs(y, x, 0, 0);
-			visitNum[mat[y][x]] = false;
+			dfs(y, x);
 		}
+	}
 
-	return maxCnt;
+	return max_path;
 }
 
 
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	int tc;
 	cin >> tc;
 
-	for (int i = 1; i < tc + 1; ++i) {
-		cout << "#" << i << " " << solve() << endl;
-	}
+	for (int i = 1;i <= tc;++i)
+		cout << "#" << i << " " << solve() << "\n";
+
 	return 0;
 }

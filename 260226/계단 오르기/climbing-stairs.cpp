@@ -24,7 +24,7 @@ int step(int n)
     if (vi[n] != -1)
         return vi[n];
 
-	vi[n] = step(n - 2) + step(n - 3);
+	vi[n] = max(step(n - 2), step(n - 3)) + 1;
 
     return  vi[n];
 }

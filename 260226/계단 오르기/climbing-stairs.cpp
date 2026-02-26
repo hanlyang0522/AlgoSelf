@@ -12,8 +12,8 @@ void init()
     cin >> N;
     vi.assign(N + 1, -1);
 
-    vi[0] = 0;
-    vi[1] = 1;
+    vi[0] = 1e9;
+    vi[1] = 1e9;
     vi[2] = 1;
     vi[3] = 1;
 }
@@ -40,5 +40,6 @@ int solve()
 
 int main() {
     cout << solve();
+    int k = 3;
     return 0;
 }

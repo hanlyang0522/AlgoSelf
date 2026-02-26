@@ -12,8 +12,8 @@ void init()
     cin >> N;
     vi.assign(N + 1, -1);
 
-    vi[0] = 1e9;
-    vi[1] = 1e9;
+    vi[0] = 1;
+    vi[1] = 0;
     vi[2] = 1;
     vi[3] = 1;
 }
@@ -24,7 +24,7 @@ int step(int n)
     if (vi[n] != -1)
         return vi[n];
 
-	vi[n] = min(step(n - 2) + 1, step(n - 3) + 1);
+	vi[n] = step(n - 2) + 1, step(n - 3);
 
     return  vi[n];
 }
@@ -34,9 +34,7 @@ int solve()
 {
     init();
 
-    if (N == 0)
-        return 1;
-    else if (N == 1)
+    if (N == 0 || N == 1)
         return 0;
 
     return step(N)%10007;

@@ -24,7 +24,7 @@ int step(int n)
     if (vi[n] != -1)
         return vi[n];
 
-	vi[n] = step(n - 2) + 1, step(n - 3);
+	vi[n] = step(n - 2) + step(n - 3);
 
     return  vi[n];
 }

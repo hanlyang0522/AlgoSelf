@@ -10,18 +10,14 @@ int N;
 vector<int> vi;
 
 
-int fibo(int N)
+int fibo(int n)
 {
-    if (N == 0)
-    {
-        return 0;
-    }
-    else if(N==1)
-    {
-        return 1;
-    }
+    if (vi[n] != -1)
+        return vi[n];
 
-    return fibo(N - 1) + fibo(N - 2);
+    vi[n] = fibo(n - 1) + fibo(n - 2);
+
+    return  vi[n];
 }
 
 
@@ -29,6 +25,8 @@ int solve()
 {
     cin >> N;
     vi.assign(N + 1, -1);
+    vi[0] = 0;
+    vi[1] = 1;
 
     return fibo(N);
 }

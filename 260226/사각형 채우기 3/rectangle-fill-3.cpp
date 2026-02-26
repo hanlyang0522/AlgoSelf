@@ -6,7 +6,7 @@ using namespace std;
 
 
 int N;
-vector<int> dp;
+vector<long long> dp;
 
 void init()
 {

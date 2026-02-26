@@ -24,7 +24,7 @@ int step(int n)
     if (vi[n] != -1)
         return vi[n];
 
-	vi[n] = max(step(n - 2), step(n - 3)) + 1;
+	vi[n] = (step(n - 2) + step(n - 3))%10007;
 
     return  vi[n];
 }
@@ -34,12 +34,12 @@ int solve()
 {
     init();
 
-    return step(N)%10007;
+    return step(N);
 }
 
 
 int main() {
     cout << solve();
-
+    int k = 3;
     return 0;
 }

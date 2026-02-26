@@ -23,7 +23,7 @@ int dp(int n)
     if (vi[n] != -1)
         return vi[n];
 
-    vi[n] = dp(n - 1) + dp(n - 2);
+    vi[n] = (dp(n - 1) + dp(n - 2)) % 10007;
 
     return vi[n];
 }

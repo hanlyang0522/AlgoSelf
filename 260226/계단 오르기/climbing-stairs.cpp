@@ -13,7 +13,7 @@ void init()
     vi.assign(N + 1, -1);
 
     vi[0] = 0;
-    vi[1] = 0;
+    vi[1] = 1;
     vi[2] = 1;
     vi[3] = 1;
 }

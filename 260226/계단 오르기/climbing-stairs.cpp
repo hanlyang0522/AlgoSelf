@@ -34,7 +34,9 @@ int solve()
 {
     init();
 
-    if (N == 0 || N == 1)
+    if (N == 0)
+        return 1;
+    else if (N == 1)
         return 0;
 
     return step(N)%10007;

@@ -33,10 +33,10 @@ int doDP(int n)
 
     for (int i = 2; i <= N; ++i)
     {
-		dp[i] = dp[i - 1] * 2 + dp[i - 2] * 3;
+		dp[i] = (dp[i - 1] * 2 + dp[i - 2] * 3) % 1000000007;
 
         for (int j = i - 3; j >= 0; --j)
-            dp[i] += dp[j] * 2;
+            dp[i] = (dp[i] +  dp[j] * 2) % 1000000007;
 	}
 
     return dp[N];
@@ -52,5 +52,6 @@ int solve()
 
 int main() {
     cout << solve();
+    int k = 3;
     return 0;
 }

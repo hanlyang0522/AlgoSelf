@@ -40,6 +40,6 @@ int solve()
 
 int main() {
     cout << solve();
-    int k = 3;
+
     return 0;
 }

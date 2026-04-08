@@ -9,33 +9,22 @@ def solve():
     s = input()
     bomb = input()
 
-    dq = deque()
+    len_b = len(bomb)
+    last_b = bomb[-1]
+    stack = []
 
-    for i in range(len(s)):
-        dq.append(s[i])
+    for char in s:
+        stack.append(char)
 
-        if s[i] == bomb[-1] and len(dq) >= len(bomb):
-            # 뺄 수 있는지 체크
-            tmp = deque()
-            # flag = True
+        if char==last_b and len(stack) >= len_b:
+            if "".join(stack[-len_b:]) == bomb:
+                for _ in range(len_b):
+                    stack.pop()
 
-            for j in range(len(bomb)):
-                t = dq.pop()
-                tmp.append(t)
-
-                if t != bomb[-1 - j]:
-                    # flag = False
-
-                    while tmp:
-                        dq.append(tmp.pop())
-                    break
-
-    if not dq:
+    if not stack:
         print("FRULA")
-    else:    
-        while dq:
-            print(dq.popleft(), end='')
-        print()
+    else:
+        print("".join(stack))
 
     pass
 
